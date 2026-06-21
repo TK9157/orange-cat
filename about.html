@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Orange Spirit</title>
+    <!-- Import Outfit Google Font for modern typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: radial-gradient(circle at center, #ff9e42 0%, #e05300 100%); /* Vibrant orange radial background */
+            font-family: 'Outfit', sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .app-main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .app-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2.5rem;
+            width: 100%;
+            max-width: 960px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        /* Oval Box Container styling to match home.html style */
+        .oval-box {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1.6rem 4.5rem;
+            border-radius: 100px; /* Capsule/Oval shape */
+            background: rgba(255, 255, 255, 0.12); /* Glassmorphic style */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 4px solid rgba(255, 255, 255, 0.85);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            text-decoration: none; /* Remove underline */
+        }
+
+        .oval-box:hover {
+            transform: scale(1.06) translateY(-4px);
+            background: linear-gradient(135deg, #ff4e50, #f9d423, #e100ff, #00b8ff);
+            background-size: 300% 300%;
+            animation: dynamicColors 4s ease infinite;
+            border-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25), 0 0 25px rgba(255, 255, 255, 0.45);
+        }
+
+        .oval-box:active {
+            transform: scale(0.98) translateY(-1px);
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 3rem;
+            font-weight: 900;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+            transition: transform 0.3s ease;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #ff3b30, #ff9500, #ff3b30); /* Dynamic shifting red and orange gradient */
+            background-size: 200% 200%;
+            animation: logoGlow 3s ease infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .oval-box:hover h1 {
+            transform: scale(1.02);
+        }
+
+        /* About Card Styling (Matches description-card in orange.html) */
+        .about-card {
+            width: 100%;
+            background: rgba(255, 128, 128, 0.15); /* Light red glassmorphic background */
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 2px solid rgba(255, 179, 179, 0.25); /* Rose-tinted border */
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-sizing: border-box;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            color: #ffffff;
+            animation: fadeIn 1.2s ease-out;
+            text-align: left;
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            cursor: default;
+        }
+
+        .about-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255, 179, 179, 0.45);
+            background: rgba(255, 128, 128, 0.22);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 128, 128, 0.25);
+        }
+
+        .about-title {
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin-top: 0;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.6rem 1.6rem;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1.5px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            cursor: pointer;
+        }
+
+        .about-title:hover {
+            transform: translateY(-3px) scale(1.03);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.35);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 0 15px rgba(255, 255, 255, 0.15);
+        }
+
+        .about-title-text {
+            background: linear-gradient(135deg, #ff7a29, #c23b00); /* Premium dark orange gradient */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Emoji Bubble styling */
+        .emoji-bubble {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff3b30, #ff9500, #ff3b30);
+            background-size: 200% 200%;
+            animation: logoGlow 3s ease infinite;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(255, 95, 0, 0.35), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            user-select: none;
+        }
+
+        .emoji-bubble:hover {
+            transform: scale(1.15) rotate(15deg);
+            box-shadow: 0 8px 20px rgba(255, 95, 0, 0.55), 0 0 12px rgba(255, 255, 255, 0.45);
+            border-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.8rem;
+        }
+
+        .about-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            background: rgba(30, 0, 0, 0.45); /* Dark background matching orange.html */
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 1.8rem;
+            box-sizing: border-box;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            cursor: pointer;
+        }
+
+        .about-item:hover {
+            transform: translateY(-5px);
+            background: rgba(60, 0, 0, 0.7); /* Glowing dark red backing */
+            border-color: rgba(255, 139, 139, 0.3);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35), 0 0 15px rgba(255, 59, 48, 0.25);
+        }
+
+        .item-header {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #ff9999;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .about-item:hover .item-header {
+            color: #ff4d4d;
+        }
+
+        .item-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #ffcccc;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        /* Header Styling with Dark Orange Glassmorphism */
+        .app-header {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background: rgba(191, 54, 12, 0.9); /* Dark Orange */
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 1.2rem 2rem;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .header-logo {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .header-logo:hover {
+            transform: scale(1.03);
+        }
+
+        /* Logo Bubble */
+        .logo-bubble {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff3b30, #ff9500, #ff3b30);
+            background-size: 200% 200%;
+            animation: logoGlow 3s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(255, 59, 48, 0.4), inset 0 2px 5px rgba(255, 255, 255, 0.35);
+            border: 2px solid rgba(255, 255, 255, 0.35);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-bubble:hover {
+            transform: scale(1.12) rotate(12deg);
+            box-shadow: 0 8px 25px rgba(255, 59, 48, 0.6), 0 0 15px rgba(255, 255, 255, 0.45);
+            border-color: rgba(255, 255, 255, 0.75);
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        /* Premium Nav Buttons */
+        .nav-button {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1.5px solid rgba(255, 255, 255, 0.15);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-button:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.18);
+            border-color: rgba(255, 255, 255, 0.45);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), 0 0 12px rgba(255, 255, 255, 0.15);
+        }
+
+        .nav-button:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+
+        .nav-button.active {
+            color: #ffffff;
+            background: linear-gradient(135deg, rgba(255, 95, 0, 0.6) 0%, rgba(255, 59, 48, 0.6) 100%);
+            border-color: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 6px 18px rgba(255, 95, 0, 0.35), inset 0 2px 4px rgba(255, 255, 255, 0.25);
+        }
+
+        .nav-button.active:hover {
+            background: linear-gradient(135deg, rgba(255, 95, 0, 0.75) 0%, rgba(255, 59, 48, 0.75) 100%);
+            border-color: rgba(255, 255, 255, 0.75);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 22px rgba(255, 95, 0, 0.45), 0 0 12px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Footer Styling */
+        .app-footer {
+            width: 100%;
+            background: rgba(163, 44, 7, 0.95); /* Even darker red-orange */
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.8rem 2rem;
+            box-sizing: border-box;
+            text-align: center;
+            margin-top: auto;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 0.2rem;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.65);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 700;
+        }
+
+        .footer-link:hover {
+            color: #ffffff;
+        }
+
+        /* Keyframe Animations */
+        @keyframes logoGlow {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes dynamicColors {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-logo" onclick="window.location.href='home.html'">
+            <div class="logo-bubble">
+                <!-- Line-art SVG Orange Logo -->
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 1px 3px rgba(0,0,0,0.15));">
+                  <circle cx="12" cy="13" r="7" fill="rgba(255, 255, 255, 0.15)"></circle>
+                  <path d="M12 5C14.5 3 17 4.5 17 4.5"></path>
+                  <path d="M12 9C12 7 13 6 13 6"></path>
+                </svg>
+            </div>
+            Orange
+        </div>
+        <nav class="header-nav">
+            <a href="home.html" class="nav-button">Home</a>
+            <a href="orange.html" class="nav-button">Gallery</a>
+            <a href="about.html" class="nav-button active">About</a>
+        </nav>
+    </header>
+
+    <main class="app-main">
+        <div class="app-container">
+            <!-- Oval box header -->
+            <a href="orange.html" class="oval-box">
+                <h1>
+                    <span>🍊</span>
+                    <span class="gradient-text">Orange Lore</span>
+                    <span>🍊</span>
+                </h1>
+            </a>
+
+            <!-- About Card Grid -->
+            <div class="about-card">
+                <h2 class="about-title">
+                    <span class="emoji-bubble">📖</span>
+                    <span class="about-title-text">The Legend & The Mission</span>
+                    <span class="emoji-bubble">📖</span>
+                </h2>
+                <div class="about-grid">
+                    <div class="about-item">
+                        <div class="item-header">🐱 The Orange Gene</div>
+                        <p class="item-text">Approximately 80% of orange cats are male. The gene responsible for their distinct color is located on the X chromosome. This genetic uniqueness comes with a personality that is famously vibrant, friendly, and extremely chatty.</p>
+                    </div>
+                    <div class="about-item">
+                        <div class="item-header">🧠 The Single Braincell</div>
+                        <p class="item-text">In internet lore, it is believed that all orange cats share a single brain cell. When one gets it, they display absolute genius, but most of the time they operate on pure, delightful, zero-braincell chaos.</p>
+                    </div>
+                    <div class="about-item">
+                        <div class="item-header">📸 The Gallery Goal</div>
+                        <p class="item-text">Our project celebrates the unpredictable spirit of orange cats. By compiling a gallery of their daily moments, chaotic play, and cute naps, we bring warmth and laughter to orange cat lovers worldwide.</p>
+                    </div>
+                    <div class="about-item">
+                        <div class="item-header">💬 Dynamic Devs</div>
+                        <p class="item-text">Brought to life with love by a dedicated community of creators. Follow our builders' journeys on social media using the links below, and join in sharing the everlasting orange cat energy!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="app-footer">
+        <div class="footer-content">
+            <p style="margin: 0; font-weight: 700; letter-spacing: 0.5px;">© 2026 Orange Gallery. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <span style="color: rgba(255,255,255,0.2)">|</span>
+                <a href="#" class="footer-link">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
